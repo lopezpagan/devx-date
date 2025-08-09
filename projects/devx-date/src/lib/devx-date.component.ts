@@ -2,7 +2,7 @@ import { Component, ViewChild, ElementRef, Input, EventEmitter, Output, OnInit }
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'lib-devx-date',
+  selector: 'devx-date',
   standalone: false,
   styleUrls: ['./devx-date.component.scss'],
   template: `
