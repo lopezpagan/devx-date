@@ -10,19 +10,39 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
       <label class="devx-date-mm" for="mm">
         <input #mmInput id="mm" formControlName="mm" type="text" placeholder="MM"
                inputmode="numeric" pattern="[0-9]*" maxlength="2"
+               [class.invalid]="fg.get('mm')?.errors && fg.get('mm')?.touched"
                (input)="handleInput($event, ddInput)" />
+        <div class="devx-message">
+          <span class="field-label">MM</span>
+          <span class="error" *ngIf="fg.get('mm')?.errors?.['required'] && fg.get('mm')?.touched">is required</span>
+          <span class="error" *ngIf="fg.get('mm')?.errors?.['pattern'] && fg.get('mm')?.touched">only numbers</span>
+          <span class="error" *ngIf="fg.errors?.['invalidMonth'] && fg.get('mm')?.touched">is invalid</span>
+        </div>
       </label>
 
       <label class="devx-date-dd" for="dd">
         <input #ddInput id="dd" formControlName="dd" type="text" placeholder="DD"
                inputmode="numeric" pattern="[0-9]*" maxlength="2"
+               [class.invalid]="fg.get('dd')?.errors && fg.get('dd')?.touched"
                (input)="handleInput($event, yyyyInput)" />
+        <div class="devx-message">
+          <span class="field-label">DD</span>
+          <span class="error" *ngIf="fg.get('dd')?.errors?.['required'] && fg.get('dd')?.touched">is required</span>
+          <span class="error" *ngIf="fg.get('dd')?.errors?.['pattern'] && fg.get('dd')?.touched">only numbers</span>
+          <span class="error" *ngIf="fg.errors?.['invalidDay'] && fg.get('dd')?.touched">is invalid</span>
+        </div>
       </label>
 
       <label class="devx-date-yyyy" for="yyyy">
         <input #yyyyInput id="yyyy" formControlName="yyyy" type="text" placeholder="YYYY"
                inputmode="numeric" pattern="[0-9]*" maxlength="4"
+               [class.invalid]="fg.get('yyyy')?.errors && fg.get('yyyy')?.touched"
                (input)="handleInput($event, null)" />
+        <div class="devx-message">
+          <span class="field-label">YYYY</span>
+          <span class="error" *ngIf="fg.get('yyyy')?.errors?.['required'] && fg.get('yyyy')?.touched">is required</span>
+          <span class="error" *ngIf="fg.get('yyyy')?.errors?.['pattern'] && fg.get('yyyy')?.touched">only numbers</span>
+        </div>
       </label>
     </form>
   `
@@ -69,11 +89,47 @@ export class DevxDateComponent implements OnInit {
 
   handleInput(event: Event, nextField: HTMLInputElement | null) {
     const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/\D/g, '');
-    this.fg.get(input.id)?.setValue(input.value, { emitEvent: false });
-
-    if (input.maxLength && input.value.length >= input.maxLength && nextField) {
-      nextField.focus();
+    const newValue = input.value.replace(/\D/g, '');
+    
+    // Validate input based on field type
+    let isValid = true;
+    if (input.id === 'mm') {
+        isValid = !newValue || (parseInt(newValue) >= 1 && parseInt(newValue) <= 12);
+    } else if (input.id === 'dd') {
+        isValid = !newValue || (parseInt(newValue) >= 1 && parseInt(newValue) <= 31);
+    } else if (input.id === 'yyyy') {
+        isValid = !newValue || (parseInt(newValue) >= 1900 && parseInt(newValue) <= 9999);
+    }
+    
+    // Only update value if it's valid
+    if (isValid) {
+        input.value = newValue;
+        this.fg.get(input.id)?.setValue(newValue, { emitEvent: true });
+        
+        // Move to next field only if current is valid and complete
+        if (input.maxLength && 
+            newValue.length >= input.maxLength && 
+            nextField && !this.fg.get(input.id)?.errors
+        ) {
+              this.fg.get('mm')?.enable();
+              this.fg.get('dd')?.enable();
+              this.fg.get('yyyy')?.enable();
+              
+              if (input.id !== 'yyyy') {
+                    nextField.focus();
+              }
+          }
+    } else {
+        // Revert to previous valid value
+        input.value = this.fg.get(input.id)?.value || '';
+        if (input.id === 'mm') {
+            this.fg.get('dd')?.disable();
+            this.fg.get('yyyy')?.disable();
+        }
+        if (input.id === 'dd') {
+            this.fg.get('mm')?.disable();
+            this.fg.get('yyyy')?.disable();
+        }
     }
   }
 

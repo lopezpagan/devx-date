@@ -9,60 +9,94 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 
-    &-mm {
-      width: 100%;
-      height: 50px;
-      color: #333;
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-right: 8px;
+    font-size: xx-small;
+    text-align: center;
+    font-family: sans-serif;
 
-      input {
-        background-color: transparent;
-        color: #333;
-        width: 100%;
-        text-align: center;
-        height: 100%;
-        border: none;
-        padding: 0 10px;
-        font-size: 16px;
-        box-sizing: border-box;
+    .field-label {
+      font-weight: bold;
+    }
+
+    input {
+      &.invalid {
+        border-color: red;
+        color: red;
       }
     }
 
-    &-dd {
-      width: 100%;
-      height: 50px;
-      color: #333;
-      border-left: 1px dashed #ccc;
-      border-right: 1px dashed #ccc;
-
-      input {
-        background-color: transparent;
-        color: #333;
-        width: 100%;
-        text-align: center;
-        height: 100%;
-        border: none;
-        padding: 0 10px;
-        font-size: 16px;
-        box-sizing: border-box;
-      }
+    .error {
+      margin-left: 2px;
+      color: red;
+      font-size: xx-small;
+      margin-top: 4px;
     }
+  }
 
-    &-yyyy {
-      width: 100%;
-      height: 50px;
+
+  &-mm {
+    width: 100%;
+    height: 50px;
+    color: #333;
+
+    input {
+      background-color: transparent;
       color: #333;
-
-      input {
-        background-color: transparent;
-        color: #333;
-        width: 100%;
-        text-align: center;
-        height: 100%;
-        border: none;
-        padding: 0 10px;
-        font-size: 16px;
-        box-sizing: border-box;
-      }
+      width: 100%;
+      text-align: center;
+      height: 100%;
+      border: none;
+      padding: 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.2rem;
+      font-weight: bold;
+      box-sizing: border-box;
     }
+  }
+
+  &-dd {
+    width: 100%;
+    height: 50px;
+    color: #333;
+    border-left: 1px dashed #ccc;
+    border-right: 1px dashed #ccc;
+
+    input {
+      background-color: transparent;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      height: 100%;
+      border: none;
+      padding: 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.2rem;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+  }
+
+  &-yyyy {
+    width: 100%;
+    height: 50px;
+    color: #333;
+
+    input {
+      background-color: transparent;
+      color: #333;
+      width: 100%;
+      text-align: center;
+      height: 100%;
+      border: none;
+      padding: 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.2rem;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+  }
 }
 
