@@ -1,22 +1,12 @@
 # DevxDate
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+![devx-date](devx-date.png)
 
-## Generate
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
 
-Run `ng generate component component-name --project devx-date` to generate a new component. 
+## Install Project
 
-## Build
-
-Run `ng build devx-date` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build devx-date`, go to the dist folder `cd dist/devx-date` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test devx-date` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm install https://lopezpagan@bitbucket.org/sociants-dev/devx-date.git` to install the project component. [This is a private repo]
 
 ## How to use
 Once you publish your library, you can import it into your Angular app.
@@ -45,7 +35,12 @@ Then you can use the component in your html:
     <p>{{ current_date ? current_date : 'Date output here' }}</p>
 ```
 
+```typescript
 
-## Further help
+    current_date: Date = new Date();
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    setDate(current_date: Date) {
+        console.log('current_date', current_date)
+    }
+
+```
