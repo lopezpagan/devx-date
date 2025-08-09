@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'test-app';
+  current_date: Date = new Date();
+
+  setDate($event: Date) {
+    this.current_date = $event;
+  }
 }
