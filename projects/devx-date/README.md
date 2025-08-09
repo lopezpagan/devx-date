@@ -18,6 +18,34 @@ After building your library with `ng build devx-date`, go to the dist folder `cd
 
 Run `ng test devx-date` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## How to use
+Once you publish your library, you can import it into your Angular app.
+
+```typescript
+
+import { DevxDateModule } from 'devx-date';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    DevxDateModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+``` 
+
+Then you can use the component in your html:
+```html
+    <devx-date [current_date]="current_date" (setDate)="setDate($event)"></devx-date>
+    <p>{{ current_date ? current_date : 'Date output here' }}</p>
+```
+
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
