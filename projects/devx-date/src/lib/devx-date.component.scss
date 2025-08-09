@@ -1,0 +1,68 @@
+.devx-date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+    &-mm {
+      width: 100%;
+      height: 50px;
+      color: #333;
+
+      input {
+        background-color: transparent;
+        color: #333;
+        width: 100%;
+        text-align: center;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+    }
+
+    &-dd {
+      width: 100%;
+      height: 50px;
+      color: #333;
+      border-left: 1px dashed #ccc;
+      border-right: 1px dashed #ccc;
+
+      input {
+        background-color: transparent;
+        color: #333;
+        width: 100%;
+        text-align: center;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+    }
+
+    &-yyyy {
+      width: 100%;
+      height: 50px;
+      color: #333;
+
+      input {
+        background-color: transparent;
+        color: #333;
+        width: 100%;
+        text-align: center;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+    }
+}
+
