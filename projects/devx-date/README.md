@@ -2,10 +2,9 @@
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
 
-## Code scaffolding
+## Generate
 
-Run `ng generate component component-name --project devx-date` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project devx-date`.
-> Note: Don't forget to add `--project devx-date` or else it will be added to the default project in your `angular.json` file. 
+Run `ng generate component component-name --project devx-date` to generate a new component. 
 
 ## Build
 
